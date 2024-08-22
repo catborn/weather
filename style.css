@@ -17,7 +17,7 @@ body {
 .container {
   position: relative;
   width: 400px;
-  height: 105px;
+  height: 605px;
   background: #fff;
   padding: 28px 32px;
   overflow: hidden;
@@ -35,7 +35,7 @@ body {
 }
 
 .search-box input {
-  color: green;
+  color: darkslategrey;
   width: 80%;
   font-size: 24px;
   font-weight: 500;
@@ -46,7 +46,7 @@ body {
 .search-box input::placeholder {
   font-size: 20px;
   font-weight: 500;
-  color: orangered;
+  color: lightcoral;
   text-transform: capitalize;
 }
 
@@ -54,8 +54,8 @@ body {
   cursor: pointer;
   width: 50px;
   height: 50px;
-  color: orangered;
-  background: yellowgreen;
+  color: lightcoral;
+  background: darkslategray;
   border-radius: 50%;
   font-size: 22px;
   transition: 0.4s ease;
@@ -63,12 +63,12 @@ body {
 
 .search-box button:hover {
   color: #fff;
-  background-color: peachpuff;
+  background-color: lightcoral;
 }
 
 .search-box i {
   position: absolute;
-  color: greenyellow;
+  color: darkslategray;
   font-size: 28px;
 }
 
@@ -83,7 +83,7 @@ body {
 
 .weather-box .temperature {
   position: relative;
-  color: black;
+  color: darkslategray;
   font-size: 4rem;
   font-weight: 800;
   margin-top: 30px;
