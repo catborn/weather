@@ -29,6 +29,7 @@
       position: relative;
       width: 400px;
       height: 140px;
+      /* test size */
       background: #fff;
       padding: 28px 32px;
       overflow: hidden;
@@ -51,7 +52,7 @@
       font-size: 24px;
       font-weight: 500;
       text-transform: uppercase;
-      padding: 12px;
+      padding: 32px;
     }
 
     .search-box input::placeholder {
@@ -142,7 +143,7 @@
     .weather-details i {
       color: orangered;
       font-size: 26px;
-      margin-right: 10px;
+      margin-top: 6px;
     }
 
     .weather-details span {
@@ -177,11 +178,11 @@
       margin-top: 12px;
     }
 
-    .weather-box,
+    /* .weather-box,
     .weather-details {
       scale: 0;
       opacity: 0;
-    }
+    } */
 
     .fade-in {
       animation: 0.5s fadeIn forwards;
@@ -207,12 +208,12 @@
     </div>
 
     <div class="not-found">
-      <img src="images/404.svg" alt="Location not found">
+      <img src="images/404.svg">
       <p>Oops! Invalid location :/</p>
     </div>
 
     <div class="weather-box">
-      <img src="" alt="Weather icon">
+      <img src="">
       <p class="temperature"></p>
       <p class="description"></p>
     </div>
@@ -250,13 +251,10 @@
 
       if (city === "") return;
 
-      fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${APIKey}`)
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-          }
-          return response.json();
-        })
+      fetch(
+        `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${APIKey}`
+      )
+        .then((response) => response.json())
         .then((json) => {
           if (json.cod === "404") {
             container.style.height = "400px";
@@ -273,25 +271,32 @@
           const image = document.querySelector(".weather-box img");
           const temperature = document.querySelector(".weather-box .temperature");
           const description = document.querySelector(".weather-box .description");
-          const humidity = document.querySelector(".weather-details .humidity span");
+          const humidity = document.querySelector(
+            ".weather-details .humidity span"
+          );
           const wind = document.querySelector(".weather-details .wind span");
 
           switch (json.weather[0].main) {
             case "Clear":
               image.src = "images/clear.png";
               break;
+
             case "Rain":
               image.src = "images/rain.png";
               break;
+
             case "Snow":
               image.src = "images/snow.png";
               break;
+
             case "Clouds":
               image.src = "images/clouds.png";
               break;
+
             case "Haze":
               image.src = "images/haze.png";
               break;
+
             default:
               image.src = "";
           }
@@ -301,21 +306,14 @@
           humidity.innerHTML = `${json.main.humidity}%`;
           wind.innerHTML = `${parseInt(json.wind.speed)}Km/h`;
 
-          weatherBox.style.display = "block";
-          weatherDetails.style.display = "flex";
+          weatherBox.style.display = "";
+          weatherDetails.style.display = "";
           weatherBox.classList.add("fadeIn");
           weatherDetails.classList.add("fadeIn");
           container.style.height = "590px";
-        })
-        .catch((error) => {
-          console.error('There was a problem with the fetch operation:', error);
-          container.style.height = "400px";
-          weatherBox.style.display = "none";
-          weatherDetails.style.display = "none";
-          error404.style.display = "block";
-          error404.classList.add('fadeIn');
         });
     });
+
   </script>
 </body>
 
