@@ -38,6 +38,11 @@
       transition: 0.6s ease-out;
     }
 
+    .error-service {
+      color: coral;
+      font-size: small;
+    }
+
     .search-box {
       width: 100%;
       height: min-content;
@@ -201,9 +206,10 @@
 <body>
 
   <div class="container">
+    <p class="error-service"></p>
     <div class="search-box">
       <i class="fa-solid fa-location-dot"></i>
-      <input class="error-service" type="text" placeholder="Enter your location">
+      <input type="text" placeholder="Enter your location">
       <button class="fa-solid fa-magnifying-glass"></button>
     </div>
 
@@ -314,8 +320,8 @@
         })
         .catch((err) => {
           console.log('Произошла ошибка');
-          // const errorService = document.querySelector('.error-service')
-          // errorService.placeholder = `<span>Sorry, service unavailable</span>`
+          const errorService = document.querySelector('.error-service')
+          errorService.innerHTML = `Sorry, service unavailable :(`
         });
 
     });
