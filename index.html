@@ -311,7 +311,12 @@
           weatherBox.classList.add("fadeIn");
           weatherDetails.classList.add("fadeIn");
           container.style.height = "590px";
+        })
+        .catch((err) => {
+          console.log('Произошла ошибка');
+          temperature.innerHTML = `<span>Sorry, service unavailable</span>`
         });
+
     });
 
   </script>
